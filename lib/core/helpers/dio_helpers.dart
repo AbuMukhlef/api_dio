@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:api_dio/core/const/api_const.dart';
 import 'package:dio/dio.dart';
 
@@ -9,10 +11,30 @@ class DioHelpers {
       BaseOptions(
         baseUrl: ApiConst.baseUrl,
         headers: {
-          'Content-Type':'application/json',
-          
+          'Content-Type': 'application/json',
         },
       ),
     );
+  }
+
+  Future<Response> getData({
+    required String endPoints,
+    Map<String, dynamic>? queryParameters,
+    String? token,
+  }) async {
+    try {
+      dio.options.headers = {
+        'Authorization': 'Bearer ${token ?? ''}',
+      };
+
+      final response = await dio.get(
+        endPoints,
+        queryParameters: queryParameters,
+      );
+      return response;
+
+    } catch (e) {
+      rethrow;
+    }
   }
 }

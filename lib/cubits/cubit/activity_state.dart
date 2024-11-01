@@ -11,5 +11,5 @@ final class ActivityUpdateState extends ActivityState {}
 
 final class ActivityErrorState extends ActivityState {
   final String error;
-  ActivityErrorState({required this.error});
+  ActivityErrorState(data, {required this.error});
 }

@@ -16,10 +16,12 @@ class ActivityCubit extends Cubit<ActivityState> {
 
   Future<void> getActivity() async {
     emit(ActivityLoadingState());
+      print('rickMorty');
     await DioHelper.getData(endPoints: ApiConst.endpointCharacter)
         .then((value) {
-      rickMorty = RickMorty.fromJson(value.data['results'][0]);
-      print(rickMorty);
+      // print('value: $value');
+      rickMorty = RickMorty.fromJson(value.data);
+      print('rickMorty: ${rickMorty?.results[5].species}');
       emit(ActivityUpdateState());
     }).catchError((error) {
       if (error is DioException) {

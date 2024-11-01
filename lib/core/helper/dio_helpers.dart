@@ -1,9 +1,8 @@
-import 'dart:ffi';
 
 import 'package:api_dio/core/const/api_const.dart';
 import 'package:dio/dio.dart';
 
-class DioHelpers {
+class DioHelper {
   static late Dio dio;
 
   static init() {

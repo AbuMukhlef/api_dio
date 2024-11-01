@@ -14,8 +14,10 @@ class HomeScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
-            body: const Center(
-              child: Text('Hello World!'),
+            body: Center(
+              child: Text(
+                  ActivityCubit.get(context).rickMorty?.info.count.toString() ??
+                      ''),
             ),
           );
         },

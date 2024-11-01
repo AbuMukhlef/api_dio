@@ -11,6 +11,7 @@ class DioHelper {
         baseUrl: ApiConst.baseUrl,
         headers: {
           'Content-Type': 'application/json',
+          
         },
       ),
     );

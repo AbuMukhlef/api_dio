@@ -1,13 +1,77 @@
 class RickMorty {
-  late int id;
-  late String name;
-  late String species;
-  late String type;
-  late String gender;
-  late Map<String, dynamic> origin;
-  late Map<String, dynamic> location;
-  late String image;
-  late List<String> episode;
-  late String url;
-  late String created;
+  final int id;
+  final String name;
+  final String species;
+  final String type;
+  final String gender;
+  final Origin origin;
+  final Location location;
+  final String image;
+  final List<String> episode;
+  final String url;
+  final String created;
+
+  RickMorty({
+    required this.id,
+    required this.name,
+    required this.species,
+    required this.type,
+    required this.gender,
+    required this.origin,
+    required this.location,
+    required this.image,
+    required this.episode,
+    required this.url,
+    required this.created,
+  });
+
+  factory RickMorty.fromJson(Map<String, dynamic> json) {
+    return RickMorty(
+      id: json['id'],
+      name: json['name'],
+      species: json['species'],
+      type: json['type'] ?? '',
+      gender: json['gender'],
+      origin: Origin.fromJson(json['origin']),
+      location: Location.fromJson(json['location']),
+      image: json['image'],
+      episode: List<String>.from(json['episode'].forEach((e) => e)),
+      url: json['url'],
+      created: json['created'],
+    );
+  }
+}
+
+class Origin {
+  final String name;
+  final String url;
+
+  Origin({
+    required this.name,
+    required this.url,
+  });
+
+  factory Origin.fromJson(Map<String, dynamic> json) {
+    return Origin(
+      name: json['name'],
+      url: json['url'],
+    );
+  }
+}
+
+class Location {
+  final String name;
+  final String url;
+
+  Location({
+    required this.name,
+    required this.url,
+  });
+
+  factory Location.fromJson(Map<String, dynamic> json) {
+    return Location(
+      name: json['name'],
+      url: json['url'],
+    );
+  }
 }

@@ -11,8 +11,7 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ActivityCubit()..getActivity(),
       child: BlocConsumer<ActivityCubit, ActivityState>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
             body: const Center(
